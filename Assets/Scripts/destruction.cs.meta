@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 612e5adbde2808148916334ec7f6f69f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gridMap: {instanceID: 0}
+  - Wall: {instanceID: 0}
+  - Destructible: {fileID: 11400000, guid: 76111e51d7df53c4e899edc74dad8f0d, type: 2}
+  - Explosion: {fileID: 8994355628811693682, guid: f2af2ac07197955459a0b5e8a093f783, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

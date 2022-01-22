@@ -14,10 +14,10 @@ public class destruction : MonoBehaviour
     public Tile Destructible;
     public GameObject Explosion;
     public Animator die;
+    public int modifier = 4;
     public void Explode(Vector2 position)
     {
         //mnodifier for explosion size
-        int modifier = 1;
         var explosionOrigin = gridMap.WorldToCell(position);
         LeveledExplosion(explosionOrigin, modifier);
     }
@@ -60,7 +60,7 @@ public class destruction : MonoBehaviour
     /// <param name="modifier">Modifier of the explosion size.</param>
     public void LeveledExplosion(Vector3Int cell, int modifier)
     {
-        if (modifier <= 0)
+        if (modifier <= 1)
         {
             //center explosion
             ExplodeCell(cell);
@@ -71,7 +71,7 @@ public class destruction : MonoBehaviour
             ExplodeCell(cell + new Vector3Int(0, -1, 0));
         }
 
-        if (modifier == 1)
+        if (modifier == 2)
         {
             //center explosion
             ExplodeCell(cell);
@@ -91,6 +91,99 @@ public class destruction : MonoBehaviour
             if (ExplodeCell(cell + new Vector3Int(0, -1, 0)))
             {
                 ExplodeCell(cell + new Vector3Int(0, -2, 0));
+            }
+        }
+
+        if (modifier == 3)
+        {
+            //center explosion
+            ExplodeCell(cell);
+            //offset explosions on sides. Default size iz offset by 1
+            if (ExplodeCell(cell + new Vector3Int(1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(2, 0, 0)))
+                    ExplodeCell(cell + new Vector3Int(3, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(-1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(-2, 0, 0)))
+                    ExplodeCell(cell + new Vector3Int(-3, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, 1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, 2, 0)))
+                    ExplodeCell(cell + new Vector3Int(0, 3, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, -1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, -2, 0)))
+                    ExplodeCell(cell + new Vector3Int(0, -3, 0));
+            }
+        }
+
+        if (modifier == 4)
+        {
+            //center explosion
+            ExplodeCell(cell);
+            //offset explosions on sides. Default size iz offset by 1
+            if (ExplodeCell(cell + new Vector3Int(1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(2, 0, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(3, 0, 0)))
+                        ExplodeCell(cell + new Vector3Int(4, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(-1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(-2, 0, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(-3, 0, 0)))
+                        ExplodeCell(cell + new Vector3Int(-4, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, 1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, 2, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(0, 3, 0)))
+                        ExplodeCell(cell + new Vector3Int(0, 4, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, -1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, -2, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(0, -3, 0)))
+                        ExplodeCell(cell + new Vector3Int(0, -4, 0));
+            }
+        }
+
+        if (modifier == 5)
+        {
+            //center explosion
+            ExplodeCell(cell);
+            //offset explosions on sides. Default size iz offset by 1
+            if (ExplodeCell(cell + new Vector3Int(1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(2, 0, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(3, 0, 0)))
+                        if (ExplodeCell(cell + new Vector3Int(4, 0, 0)))
+                            ExplodeCell(cell + new Vector3Int(5, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(-1, 0, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(-2, 0, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(-3, 0, 0)))
+                        if (ExplodeCell(cell + new Vector3Int(-4, 0, 0)))
+                            ExplodeCell(cell + new Vector3Int(-5, 0, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, 1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, 2, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(0, 3, 0)))
+                        if (ExplodeCell(cell + new Vector3Int(0, 4, 0)))
+                            ExplodeCell(cell + new Vector3Int(0, 5, 0));
+            }
+            if (ExplodeCell(cell + new Vector3Int(0, -1, 0)))
+            {
+                if (ExplodeCell(cell + new Vector3Int(0, -2, 0)))
+                    if (ExplodeCell(cell + new Vector3Int(0, -3, 0)))
+                        if (ExplodeCell(cell + new Vector3Int(0, -4, 0)))
+                            ExplodeCell(cell + new Vector3Int(0, -5, 0));
             }
         }
     }

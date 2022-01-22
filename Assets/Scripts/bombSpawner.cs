@@ -10,7 +10,7 @@ public class bombSpawner : MonoBehaviour
     public GameObject bombObject;
     public GameObject player;
     public Tilemap blocked;
-    public Counter counter;
+    public GameLogic counter;
 
     // Update is called once per frame
     /// <summary>
@@ -38,11 +38,11 @@ public class bombSpawner : MonoBehaviour
         }
 
         //checks if player is alive, the button space is pressed, and if count of bombs is not less than zero
-        if (player.GetComponent<PlayerMovement>().isPlayerAlive && Input.GetButtonDown("Jump") && counter.playerBombCounter > 0)
+        if (player.GetComponent<PlayerMovement>().isPlayerAlive && Input.GetButtonDown("Jump") && counter.PlayerBombCounter > 0)
         {
             counter.DecrementBombCounter();
             PlayerPlaceBomb();
-            Debug.Log(counter.playerBombCounter);
+            Debug.Log(counter.PlayerBombCounter);
             Invoke("Increment", 3);
         }
     }

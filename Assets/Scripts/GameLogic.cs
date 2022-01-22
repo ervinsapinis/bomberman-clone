@@ -16,6 +16,18 @@ namespace Assets.Scripts
         public GameObject player;
 
         public static int playerLives = 2;
+        private static int _playerBombCounter = 2;
+        private static int _explosionModifier = 1;
+
+        public int ExplosionModifier
+        {
+            get { return _explosionModifier; }
+        }
+
+        public int PlayerBombCounter
+        {
+            get { return _playerBombCounter; }
+        }
 
         private void Update()
         {
@@ -24,7 +36,6 @@ namespace Assets.Scripts
                 decrementPlayerLives();
                 Restart();
             }
-
             if (playerLives <= 0)
                 Debug.Log("GAME OVER");
         }
@@ -38,6 +49,21 @@ namespace Assets.Scripts
         void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void IncrementBombCounter()
+        {
+            _playerBombCounter++;
+        }
+
+        public void IncrementExplosionRadius()
+        {
+            _explosionModifier++;
+        }
+
+        public void DecrementBombCounter()
+        {
+            _playerBombCounter--;
         }
     }
 }

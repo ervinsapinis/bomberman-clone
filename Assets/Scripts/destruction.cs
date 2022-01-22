@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets;
+using Assets.Scripts;
 
 public class destruction : MonoBehaviour
 {
@@ -14,10 +15,11 @@ public class destruction : MonoBehaviour
     public Tile Destructible;
     public GameObject Explosion;
     public Animator die;
-    public int modifier = 4;
+    public GameLogic logic;
     public void Explode(Vector2 position)
     {
         //mnodifier for explosion size
+        int modifier = logic.ExplosionModifier;
         var explosionOrigin = gridMap.WorldToCell(position);
         LeveledExplosion(explosionOrigin, modifier);
     }
@@ -60,7 +62,7 @@ public class destruction : MonoBehaviour
     /// <param name="modifier">Modifier of the explosion size.</param>
     public void LeveledExplosion(Vector3Int cell, int modifier)
     {
-        if (modifier <= 1)
+        if (modifier == 1)
         {
             //center explosion
             ExplodeCell(cell);

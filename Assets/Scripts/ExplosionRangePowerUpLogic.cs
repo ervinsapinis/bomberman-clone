@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class ExplosionRangePowerUpLogic: MonoBehaviour
 {
-    public GameLogic logic; 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject instance = GameObject.Find("GameLogic");
         if (collision.transform.name == "player")
         {
             Debug.Log("Picked up power up for explosion range");
-            logic.IncrementExplosionRadius();
+            instance.GetComponent<GameLogic>().IncrementExplosionRadius();
+            Destroy(gameObject);
         }
     }
 }

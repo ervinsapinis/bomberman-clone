@@ -1,0 +1,20 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public static  class WaitExtension
+{
+    public static void Wait(this MonoBehaviour mono, float delay, UnityAction function)
+    {
+        mono.StartCoroutine(ExececuteAction(delay, function));
+    }
+
+    private static IEnumerator ExececuteAction(float delay, UnityAction function)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        function.Invoke();
+        yield break;
+    }
+}

@@ -2,6 +2,7 @@ using Assets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     //reference to player Animator
     public Animator playerMovement;
 
+    public Tilemap grid;
     public bool canPlayerMove = true;
     public bool isPlayerAlive = true;
 
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
             playerMovement.SetFloat("Speed", movementVector2.magnitude);
         }
     }
+
 
     void FixedUpdate()
     {

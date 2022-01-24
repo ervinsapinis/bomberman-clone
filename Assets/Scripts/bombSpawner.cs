@@ -55,21 +55,22 @@ public class bombSpawner : MonoBehaviour
     public bool PlayerPlaceBomb()
     {
         var playerPos = player.transform.position;
-            var playerCell = gridMap.WorldToCell(playerPos);
-            Tile checkTile = gridMap.GetTile<Tile>(playerCell);
+        var playerCell = gridMap.WorldToCell(playerPos);
+        Tile checkTile = gridMap.GetTile<Tile>(playerCell);
 
-            //this variable gets the center position of the selected cell.
-            var centerCellPos = gridMap.GetCellCenterWorld(playerCell);
-            var xPos = centerCellPos.x;
-            var yPos = centerCellPos.y - 0.4f;
-            var zPos = centerCellPos.z;
-            var bombPos = new Vector3(xPos, yPos, zPos);
+        //this variable gets the center position of the selected cell.
+        var centerCellPos = gridMap.GetCellCenterWorld(playerCell);
+        var xPos = centerCellPos.x;
+        var yPos = centerCellPos.y - 0.4f;
+        var zPos = centerCellPos.z;
+        var bombPos = new Vector3(xPos, yPos, zPos);
 
-            //instancing of the bomb object. Positions the bomb in the centerCellPos which is the center, and Quaternion.identity means the object is not rotated.
-            if (checkTile != blocked)
-            {
-                Instantiate(bombObject, bombPos, Quaternion.identity);
-            }
-            return true;
+
+        //instancing of the bomb object. Positions the bomb in the centerCellPos which is the center, and Quaternion.identity means the object is not rotated.
+        if (checkTile != blocked)
+        {
+            Instantiate(bombObject, bombPos, Quaternion.identity);
+        }
+        return true;
     }
 }

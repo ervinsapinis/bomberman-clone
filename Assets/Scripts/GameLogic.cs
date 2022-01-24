@@ -18,6 +18,10 @@ namespace Assets.Scripts
         public static int playerLives = 2;
         private static int _playerBombCounter = 2;
         private static int _explosionModifier = 1;
+        public int slimeCounter = 7;
+        public float slimeSpeed = 60f;
+        public float slimeTime = 120f;
+        private bool slimeFast = false;
 
         public int ExplosionModifier
         {
@@ -31,6 +35,18 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            if (slimeTime > 0)
+            {
+                slimeTime -= Time.deltaTime;
+            }
+            if(slimeTime < 0)
+            {
+                if(!slimeFast)
+                    slimeSpeed *= 2;
+                slimeFast = true;
+                
+            }
+
             if (player.GetComponent<PlayerMovement>().isPlayerAlive == false && playerLives > 0)
             {
                 decrementPlayerLives();
@@ -38,7 +54,9 @@ namespace Assets.Scripts
             }
             if (playerLives <= 0)
                 Debug.Log("GAME OVER");
+
         }
+
 
         public void decrementPlayerLives()
         {
@@ -64,6 +82,10 @@ namespace Assets.Scripts
         public void DecrementBombCounter()
         {
             _playerBombCounter--;
+        }
+        public void DecrementSlimeCounter()
+        {
+            slimeCounter--;
         }
     }
 }

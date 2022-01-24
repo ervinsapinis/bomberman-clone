@@ -1,4 +1,5 @@
 using Assets;
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,16 +9,18 @@ using Random = System.Random;
 public class EnemyPatrol : MonoBehaviour
 {
     public bool isPatrolling;
-    public float movementSpeed = 5f;
     public Rigidbody2D body;
     private Random rnd = new Random();
     private bool mustTurn;
     private bool canMove;
+    public GameLogic logic;
+    private float movementSpeed;
 
     // Start is called before the first frame update    
 
     Vector2 GetDirection()
     {
+        movementSpeed = logic.slimeSpeed;
         Vector2 right = new Vector2(movementSpeed* Time.fixedDeltaTime, body.velocity.y);
         Vector2 left = new Vector2(movementSpeed * -1 * Time.fixedDeltaTime, body.velocity.y);
         Vector2 up = new Vector2(body.velocity.x, movementSpeed * Time.fixedDeltaTime);
@@ -127,5 +130,6 @@ public class EnemyPatrol : MonoBehaviour
     public void DestroyMe()
     {
         Destroy(gameObject);
+        logic.DecrementSlimeCounter();
     }    
 }

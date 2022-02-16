@@ -19,4 +19,12 @@ Currently basic and buggy functionality includes:
   - power up for increasing player lives;
 - monsters (currently slimes) which are also limited by the gridmap and kill the player upon touching it's body.
 
-Most immediate bug 
+Most immediate bug is the player being stuck between bombs on placement. Using platform effector has mixed results with this.
+
+TODO:
+- add a working main menu;
+- add win conditions and exit portal upon fulfilling them;
+- add more power ups;
+- add more monsters (maybe);
+- add more levels;
+- add random level placement for destroyable objects
